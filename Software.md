@@ -70,7 +70,7 @@ class KRSdriver():
     self.con.init(bits=8, parity=0, stop=1,timeout=50)
 ```
 mainプログラムで各軸のポジションの取得やモーターの回転方向などのテストができます。
-```
+```python
 if __name__ == '__main__':
   print('Start KRS Test')
   krs=KRSdriver()
@@ -225,7 +225,7 @@ example/krs/krs_driver_v2_0.py
 - サンプルコード:以下のコードを走らせ、送信機のボタンを押すと、対応する数値がコンソールに表示されます。
 
 Python
-```
+```python
 from krs_driver_v2_0 import *
 import time
 # ドライバーの初期化
