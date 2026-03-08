@@ -212,8 +212,12 @@ Beginners_auto_BLE_softwere/
 ├ ble_robot.py
 ├ README.md
 ├ README_en.md
+├ README_es-cl.md
+├ README_na.md
 ├ specifics_md_jp.md
 ├ specifics_md_en.md
+├ specifics_es-cl.md
+├ specifics_na.md
 └ LICENSE
 ```
 

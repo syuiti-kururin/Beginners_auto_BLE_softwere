@@ -159,12 +159,17 @@ PC側ソフトウェアはこれらのコマンドをBLE通信で送信します
 本プロジェクトはシンプルな構造を採用しています。
 
 ```
-ROBO-ONE_BLE_PC_Controller
+Beginners_auto_BLE_softwere
 
 ble_robot.py
-main.py
 README.md
-Specifics_md.md
+README_en.md
+README_es-cl.md
+README_na.md
+specifics_md_jp.md
+specifics_md_en.md
+specifics_es-cl.md
+specifics_na.md
 LICENSE
 ```
 
@@ -172,19 +177,13 @@ LICENSE
 
 ble_robot.py
 
-BLE通信処理を担当
+BLE通信処理 + tkinter GUIを含むメインファイル
 
-* BLEスキャン
-* デバイス接続
+* BLE接続（固定アドレスへの直接接続）
 * コマンド送信
-
-main.py
-
-操作インターフェース
-
-* ユーザー入力
-* コマンド送信テスト
-* 操作確認
+* BLE受信通知（notify）
+* GUIパネル（方向ボタン・自動/手動ボタン・ログボックス）
+* asyncioイベントループのスレッド分離
 
 ---
 

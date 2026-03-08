@@ -213,8 +213,12 @@ Beginners_auto_BLE_softwere/
 ├ ble_robot.py
 ├ README.md
 ├ README_en.md
+├ README_es-cl.md
+├ README_na.md
 ├ specifics_md_jp.md
 ├ specifics_md_en.md
+├ specifics_es-cl.md
+├ specifics_na.md
 └ LICENSE
 ```
 
@@ -345,4 +349,4 @@ send("F")
 - 商用利用
 - 営利目的での販売
 
-詳細は `LICENSE` ファイルを参照してください。
+詳細は (`LICENSE`)[/Beginners_auto_BLE_softwere/LICENSE] ファイルを参照してください。
