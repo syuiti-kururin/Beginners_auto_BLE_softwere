@@ -94,9 +94,11 @@ Instead, it provides a **newly developed PC-side BLE controller software**.
 ## Main Features
 
 * BLE connection from a PC
-* Command transmission to the robot
+* Command transmission to the robot (Forward, Backward, Left, Right, Stop)
+* Autonomous mode / Manual mode switching
+* tkinter-based GUI control panel
+* Real-time BLE receive log display
 * Continuous operation and experimentation environment
-* Support for autonomous control program development
 
 ---
 
@@ -138,14 +140,14 @@ Make sure the robot is in **BLE advertising mode**.
 
 ---
 
-### Note: How to Find the BLE UUID
+### Note: How to Find the BLE Device Address and UUID
 
-BLE communication uses **UUIDs** to identify services and characteristics.
+BLE communication requires both the **device address (MAC address)** of the target device
+and the **UUID** used for data transmission.
 
-To communicate with the robot, you may need to identify the correct UUID.
+You can identify them using BLE scanning tools such as:
 
-You can find the UUID using BLE scanning tools such as:
-
+* `sudo hcitool lescan` (Linux terminal)
 * nRF Connect (smartphone app)
 * BLE Scanner
 * Bluetooth Developer Tools (PC)
@@ -166,7 +168,25 @@ In many cases, the **Nordic UART Service** is used.
 
 ---
 
-## 3. Run the PC Software
+## 3. Set the BLE Device Address
+
+Edit the following line in `ble_robot.py` to match your robot's (e.g. Raspberry Pi Pico W) Bluetooth address:
+
+```python
+ADDRESS = "2C:CF:67:CC:B5:B4"  # ← Change this to your device's address
+```
+
+How to find your Bluetooth address (Linux):
+
+```bash
+sudo hcitool lescan
+```
+
+Alternatively, you can use **nRF Connect** (smartphone app) to find the device address.
+
+---
+
+## 4. Run the PC Software
 
 Run the controller program on the PC.
 
@@ -174,32 +194,26 @@ Run the controller program on the PC.
 python ble_robot.py
 ```
 
-or
-
-```bash
-python main.py
-```
-
-(depending on the actual file name)
-
 ---
 
-## 4. Connect via BLE
+## 5. Connect via BLE
 
-After launching the program, search for the robot BLE device and connect to it.
-
-Once connected successfully, the PC will be able to send commands to the robot.
+After launching the program, a GUI window titled **"ROBO BLE Controller"** will appear.
+Press the **Connect** button to connect to the robot.
+Once connected successfully, the status label changes to **"Connected"** and you can send commands to the robot.
 
 ---
 
 ## Directory Structure
 
 ```
-ROBO-ONE_BLE_PC_Controller/
+Beginners_auto_BLE_softwere/
 
 ├ ble_robot.py
-├ main.py
 ├ README.md
+├ README_en.md
+├ specifics_md_jp.md
+├ specifics_md_en.md
 └ LICENSE
 ```
 
@@ -268,7 +282,7 @@ Communication flow:
 | R       | Rotate Right          |
 | X       | Stop                  |
 | A       | Autonomous Mode       |
-| OP      | Manual Operation Mode |
+| Op      | Manual Operation Mode |
 
 Actual commands may depend on the robot firmware implementation.
 
@@ -298,7 +312,7 @@ The following features are planned for future development:
 * Sensor feedback to the PC
 * Mapping functionality
 * Autonomous navigation algorithms
-* GUI controller
+* Auto-scan and select BLE device
 
 ---
 

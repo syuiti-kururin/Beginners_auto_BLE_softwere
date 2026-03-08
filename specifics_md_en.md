@@ -150,7 +150,7 @@ Action: Forward movement
 | R       | Rotate Right          |
 | X       | Stop                  |
 | A       | Autonomous Mode       |
-| OP      | Manual Operation Mode |
+| Op      | Manual Operation Mode |
 
 Actual behavior depends on the robot firmware implementation.
 
@@ -161,12 +161,13 @@ Actual behavior depends on the robot firmware implementation.
 Example project structure:
 
 ```
-ROBO-ONE_BLE_PC_Controller
+Beginners_auto_BLE_softwere
 
 ble_robot.py
-main.py
 README.md
-Specifics_md.md
+README_en.md
+specifics_md_jp.md
+specifics_md_en.md
 LICENSE
 ```
 
@@ -174,18 +175,13 @@ Main roles:
 
 ble_robot.py
 
-BLE communication handling
+Main file containing BLE communication and tkinter GUI
 
-* scanning
-* connecting
-* sending commands
-
-main.py
-
-User control interface
-
-* command input
-* test operation
+* BLE connection (direct connect to fixed address)
+* Command transmission
+* BLE receive notification (notify)
+* GUI panel (directional buttons, auto/manual buttons, log box)
+* asyncio event loop in separate thread
 
 ---
 
@@ -213,8 +209,8 @@ Bleak provides cross-platform BLE functionality for:
 
 Simplified example:
 
-```
-await client.write_gatt_char(uuid, b"F")
+```python
+await client.write_gatt_char(UART_RX, "F".encode())
 ```
 
 This sends the command "F" to the robot.
@@ -236,10 +232,7 @@ Autonomous navigation
 * mapping
 * path planning
 
-Graphical controller
-
-* joystick input
-* GUI control panel
+Auto-scan and select BLE device
 
 ---
 

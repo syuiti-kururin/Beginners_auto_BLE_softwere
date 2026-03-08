@@ -148,7 +148,7 @@ PC側ソフトウェアはこれらのコマンドをBLE通信で送信します
 | R    | 右回転     |
 | X    | 停止      |
 | A    | 自動制御モード |
-| OP   | 手動操作モード |
+| Op   | 手動操作モード |
 
 ※ 実際の動作はロボット側プログラムの実装に依存します。
 
@@ -213,8 +213,8 @@ BLE Characteristic に対してコマンドを書き込みます。
 
 例：
 
-```
-await client.write_gatt_char(uuid, b"F")
+```python
+await client.write_gatt_char(UART_RX, "F".encode())
 ```
 
 このコードはロボットへ **前進コマンド** を送信します。
@@ -237,10 +237,7 @@ await client.write_gatt_char(uuid, b"F")
 * 自律移動
 * 経路探索
 
-操作インターフェース
-
-* GUIコントローラ
-* ジョイスティック入力
+BLEデバイスの自動スキャン・選択
 
 ---
 
